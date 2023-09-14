@@ -1,0 +1,47 @@
+:root {
+  --base: #ffc600;
+  --spacing: 10px;
+  --blur : 10px;
+  --border_radius:0px;
+  
+}
+
+img{
+  padding: var(--spacing);
+  background-color: var(--base);
+  filter: blur(var(--blur));
+  
+  border-radius: var(--border_radius);
+}
+
+
+.hl{
+  color: var(--base);
+}
+body {
+  text-align: center;
+  background: #193549;
+  color: white;
+  font-family: "helvetica neue", sans-serif;
+  font-weight: 100;
+  font-size: 50px;
+}
+
+.controls {
+  margin-bottom: 50px;
+}
+
+input {
+  width: 100px;
+}
+
+#reset-image{
+  cursor: pointer;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  /* font-size: medium; */
+  background-color: beige;
+  /* padding: 25px 50px 75px 100px; */
+  
+}
