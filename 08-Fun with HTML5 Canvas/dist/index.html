@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Canvas</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-800 w-screen">
+    <div class="container flex items-center w-[100vw]">
+
+        <!-- title and controls -->
+        <div class="text-slate-400 w-[10vw]  flex flex-col h-full items-center justify-center gap-14">
+            <!-- title -->
+            <div class="flex flex-col gap-3 text-center">
+                <h1 class="text-2xl font-bold">Draw Something on the canvas 🎨</h1>
+                <p class="text-s">⚠️For Desktop Screen only⚠️<p>
+            </div>
+            <!-- controls -->
+            <div class="flex flex-col gap-7" >
+                <!-- pen size -->
+                <div class=" flex flex-col justify-center items-center font-bold">
+                    <!-- pen size label -->
+                    <label for="pen-size">Pen Size</label>
+                    <input type="range" name="pen-size" id="pen-size" min="0" max="100" value="2">
+                </div>
+
+                <!-- color picker -->
+                <div class=" flex flex-col justify-center items-center font-bold">
+                    <label for="color-picker">Color Picker</label>
+                    <input type="color" name="color-picker" id="color-picker">
+                </div>
+            </div>
+        </div>
+
+
+        <canvas class="bg-white w-[90vw] h-screen" id="draw"></canvas>
+    </div>
+
+    <script>
+        const canvas = document.querySelector('#draw');
+        const ctx = canvas.getContext('2d');
+
+        const pen_size = document.querySelector('#pen-size');
+        const color_picker = document.querySelector('#color-picker');
+        let pen = 1;
+        // let color = 'black';
+        pen_size.addEventListener('input', (e) => {
+
+            pen = e.target.value;
+            if (pen === '0') {
+                ctx.lineWidth = 1;
+            } else {
+                ctx.lineWidth = pen;
+            }
+
+        })
+
+        color_picker.addEventListener('input', (e) => {
+
+            color = e.target.value;
+            ctx.strokeStyle = e.target.value;
+
+        })
+
+        // Get the height and width of the element using getBoundingClientRect()
+        const rect = canvas.getBoundingClientRect();
+        const height = rect.height;
+        const width = rect.width;
+
+        canvas.width = width;
+        canvas.height = height;
+
+        // ctx.strokeStyle = '#BADA55';
+        ctx.lineJoin = 'round';
+        ctx.lineCap = 'round';
+        ctx.lineWidth = 0;
+
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+        // let hue = 0;
+        let direction = true
+
+
+        function draw(e) {
+
+            if (!isDrawing) return; //stop the fn from running when they are not moused
+            ctx.beginPath();
+            // start from
+            ctx.moveTo(lastX, lastY); //moveTo(x,y) - defines the starting point of the line
+            //go to
+            ctx.lineTo(e.offsetX, e.offsetY); //lineTo(x,y) - defines the ending point of the line
+            ctx.stroke();
+            [lastX, lastY] = [e.offsetX, e.offsetY]
+
+
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+            isDrawing = true;
+        });
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+            // hue = 0
+        });
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseout', () => isDrawing = false);
+
+    </script>
+
+
+
+</body>
+
+</html>
