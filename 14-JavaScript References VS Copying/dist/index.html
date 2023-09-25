@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Reference VS Copy</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        pre {
+            border-radius: 20px;
+            background-color: #1a1a1a;
+            width: fit-content;
+            overflow-x: scroll;
+            margin-top: 10px;
+            color: #ebebeb;
+        }
+
+        pre code {
+            white-space: pre;
+        }
+
+        code {
+            color: #ebebeb;
+        }
+
+        .strings {
+            color: #24d813;
+        }
+
+        .obj {
+            color: #ffd0ff;
+        }
+
+        .output {
+            color: gray
+        }
+    </style>
+</head>
+
+<body class="bg-[#262626]">
+
+    <main class="mx-auto w-[80%]">
+        <!-- heading/title -->
+        <div class="text-center font-bold text-3xl text-blue-500">
+            <h1>JS References VS Copying</h1>
+            <hr class="text-blue-500">
+        </div>
+
+        <!-- References - Strings, numbers and booleans: -->
+        <div class="flex flex-col justify-center items-center my-8 gap-2 font-semibold text-2xl text-cyan-500">
+            <!-- heading -->
+            <div class="">
+                <h3>References - Strings, numbers and booleans:</h3>
+            </div>
+            <!-- image -->
+            <div><img src="../assets/References - Strings, numbers and booleans.png"
+                    alt="References - Strings, numbers and booleans"></div>
+        </div>
+
+
+        <!-- Arrays: -->
+        <div class="flex flex-col justify-center items-center my-8 gap-2 font-bold text-3xl text-blue-500">
+            <!-- heading -->
+            <div>
+                <h2>Arrays</h2>
+
+            </div>
+
+            <!-- image -->
+            <div><img src="../assets/array.png" alt="array"></div>
+        </div>
+
+        <!-- Creating an Array Reference: -->
+        <div class="flex flex-col justify-center items-center my-8 gap-2 font-semibold text-2xl text-cyan-500">
+            <!-- heading -->
+            <div>
+                <h3>Creating an Array Reference:</h3>
+            </div>
+            <!-- image -->
+            <div><img src="../assets/Creating an Array Reference.png" alt="Creating an Array Reference"></div>
+        </div>
+
+        <!-- Copying an Array: -->
+        <div class="flex flex-col justify-center items-center my-8 gap-2 font-semibold text-2xl text-cyan-500">
+            <!-- heading -->
+            <div>
+                <h3>Copying an Array:</h3>
+            </div>
+            <!-- image -->
+            <div><img src="../assets/Copying an Array.png" alt="Copying an Array:"></div>
+        </div>
+
+        <!-- Objects -->
+        <div class="flex flex-col justify-center items-center my-8 gap-2 font-bold text-3xl text-blue-500">
+            <!--Objects -->
+            <div>
+                <h2>Object</h2>
+            </div>
+            <!-- image -->
+            <div><img src="../assets/objects.png" alt="objects"></div>
+        </div>
+
+        <!-- Creating a Reference: -->
+        <div class="flex flex-col justify-center items-center my-8 gap-2 font-semibold text-2xl text-cyan-500">
+            <!-- heading -->
+            <div>
+                <h3>Creating a Reference:</h3>
+            </div>
+            <!-- image -->
+            <div><img src="../assets/Creating a Reference.png" alt="Creating a Reference:"></div>
+        </div>
+
+        <!-- Copying an Object using Object.assign():-->
+        <div class="flex flex-col justify-center items-center my-8 gap-2 font-semibold text-2xl text-cyan-500">
+            <!-- heading -->
+            <div>
+                <h3>Copying an Object using <code class="bg-[#1a1a1a] p-1 rounded-lg text-red-700 italic">Object.assign()</code>:</h3>
+            </div>
+            <!-- image -->
+            <div><img src="../assets/assign.png" alt="assign"></div>
+        </div>
+
+
+        <!-- Copying an Object using  ...spread:-->
+        <div class="flex flex-col justify-center items-center my-8 gap-2 font-semibold text-2xl text-cyan-500">
+            <!-- heading -->
+            <div>
+                <h3>Copying an Object using <code class="bg-[#1a1a1a] p-1 rounded-lg text-red-700 italic" >...spread</code>:</h3>
+            </div>
+            <!-- image -->
+            <div><img src="../assets/spread.png" alt="spread"></div>
+        </div>
+
+        <!-- Things to note  -->
+        <div class="flex flex-col justify-center items-center my-8 gap-2 font-semibold text-2xl text-cyan-500">
+            <div>
+                <h3>Things To Note</h3>
+            </div>
+            <img src="../assets/thing to note.png" alt="thing to note">
+        </div>
+
+        <!-- Another Object -->
+        <div class="flex flex-col justify-center items-center my-8 gap-2 font-semibold text-2xl text-cyan-500">
+            <!-- heading -->
+            <div>
+                <h3>Consider Another Object</h3>
+            </div>
+            <!-- image -->
+            <div><img src="../assets/another object.png" alt="Another Object"></div>
+        </div>
+
+        <!-- last section code -->
+        <div class="flex justify-center items-center">
+            <pre><code class="text-[#ebebeb]">
+            <span class="key-word text-[#2a6eec]">const</span> <span class="vars text-[#6b8fd1]">dev</span> = <span class="vars text-[#6b8fd1]">Object</span>.<span class="func text-[#eca769]">assign</span>({}, <span class="vars text-[#6b8fd1]">wes</span>);
+            <span class="vars text-[#6b8fd1]">console</span>.<span class="func text-[#eca769] ">log</span>(<span class="vars text-[#6b8fd1]">wes</span>);
+            <span class="output ">/* {
+              "name": "wes",
+              "age": "100",
+              "social": {
+                "twitter": "@wesbos",
+                "facebook": "wesbos.developer"
+              }
+            }*/</span>
+        
+            <span class="output">//If we reassign one object property 
+            //in the first level:</span>
+            <span class="vars text-[#6b8fd1]">dev</span>.<span class="obj ">name</span> = <span class="strings">'Wesley'</span>
+            <span class="vars text-[#6b8fd1]">console</span>.<span class="func text-[#eca769]">log</span>(<span class="vars text-[#6b8fd1]">dev</span>);
+            <span class="output">// It's ok! Works! </span>
+            <span class="output">/*{
+              "name": "Wesley",
+              "age": "100",
+              "social": {
+                "twitter": "@wesbos",
+                "facebook": "wesbos.developer"
+              }
+            }
+              */</span>
+        
+            <span class="output">// What if I try to reassign in 1 level deep?</span>
+            <span class="vars text-[#6b8fd1]">dev</span>.<span class="obj">social.twitter</span> = <span class="strings">'@coolman'</span>;
+            <span class="vars text-[#6b8fd1]">console</span>.<span class="func text-[#eca769]">log</span>(<span class="vars text-[#6b8fd1]">dev</span>.<span class="obj">social</span>);
+            <span class="output">//{"twitter": "@coolman", "facebook": "wesbos.developer"}</span>
+        
+            <span class="output">// Unfortunately this reassign the original object:</span>
+            <span class="vars text-[#6b8fd1]">console</span>.<span class="func">log</span>(<span class="vars text-[#6b8fd1]">wes</span>.<span class="obj">social</span>);
+            <span class="output">//{"twitter": "@coolman", "facebook": "wesbos.developer"}</span>
+        
+            <span class="output">// I understand this happens because we copy 
+            // just the first object level and form some 
+            // reason not access the nested objects properties.
+            // Another way suggested by Wes, 
+            // but not recommended by him, 
+            // is to transform this in JSON and parse the strings
+            // to turn this strings in Object again </span>
+        
+            <span class="key-word text-[#2a6eec]">const</span> <span class="vars text-[#6b8fd1]">dev2</span> = <span class="vars text-[#6b8fd1]">JSON</span>.<span class="func text-[#eca769]">stringify</span>(<span class="vars text-[#6b8fd1]">wes</span>);
+            <span class="vars text-[#6b8fd1]">console</span>.<span class="func text-[#eca769]">log</span>(<span class="vars text-[#6b8fd1]">dev2</span>);
+            <span class="output">// We just have the string, because the
+            // JSON.stringify() transforms an object to string</span>
+            <span class="output">//{"name":"wes","age":"100","social":{"twitter":"@coolman","facebook":"wesbos.developer"}}</span>
+        
+            <span class="output">// To transform this string in an object again
+            // it's necessary to parse it:</span>
+            <span class="key-word text-[#2a6eec]">const</span> <span class="vars text-[#6b8fd1]">dev3</span> = <span class="vars text-[#6b8fd1]">JSON</span>.<span class="func text-[#eca769]">parse</span>(<span class="vars text-[#6b8fd1]">JSON</span>.<span class="func text-[#eca769]">stringify</span>(<span class="vars text-[#6b8fd1]">wes</span>));
+            <span class="vars text-[#6b8fd1]">console</span>.<span class="func text-[#eca769]">log</span>(<span class="vars text-[#6b8fd1]">dev3</span>);
+            <span class="output">/* Now we have an object
+            {
+              "name": "wes",
+              "age": "100",
+              "social": {
+                "twitter": "@coolman",
+                "facebook": "wesbos.developer"
+              }
+            }*/
+          </span>
+        
+          <span class="vars text-[#6b8fd1]">dev3</span>.<span class="obj">social.twitter</span> = <span class="strings">'@coolman'</span>;
+          <span class="vars text-[#6b8fd1]">console</span>.<span class="func text-[#eca769]">log</span>(<span class="vars text-[#6b8fd1]">dev3</span>.<span class="obj">social</span>);
+          <span class="output">// {
+            "twitter": "@coolman",
+            "facebook": "wesbos.developer"
+          }</span>
+        
+          //If we look in the original array:
+          <span class="vars text-[#6b8fd1]">console</span>.<span class="func text-[#eca769]">log</span>(<span class="vars text-[#6b8fd1]">wes</span>.<span class="obj">social</span>);
+            <span class="output">/* The original array wasn't changed:
+            {
+              "twitter": "@wesbos",
+              "facebook": "wesbos.developer"
+            }*/</span>
+            </code></pre>
+        </div>
+
+
+
+
+    </main>
+
+
+
+
+    <script>
+        // start with strings, numbers and booleans
+
+        // Numbers
+        let age = 100;
+        let age2 = age;
+        console.log(age, age2);
+        //100 100
+        age = 200;
+        console.log(age, age2);
+        // 200 100
+
+        // String
+        let name = 'lokesh';
+        let name2 = name;
+        console.log(name, name2);
+        //lokesh lokesh
+        name2 = 'ghosh';
+        // console.log(name, name2);
+        //lokesh ghosh
+
+
+        // Array
+        // Let's say we have an array
+        const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+
+        // and we want to make a copy of it.
+        const team = players;
+        console.log(players, team);
+        // ["Wes","Sarah","Ryan","Poppy"]
+        // ["Wes","Sarah","Ryan","Poppy"]
+
+        // however what happens when we update that array?
+        team[3] = 'Lux'
+        console.log(players, team);
+        // ["Wes","Sarah","Ryan","Lux"]
+        // ["Wes","Sarah","Ryan","Lux"]
+
+        // now here is the problem!
+        // oh no - we have edited the original array too!
+        // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+
+        // So, how do we fix this? We take a copy instead!
+        const team2 = players.slice();
+        console.log(players, team2);
+        //['Wes', 'Sarah', 'Ryan', 'Lux'] ['Wes', 'Sarah', 'Ryan', 'Lux']
+        team2[3] = 'Ben'
+        console.log(players, team2);
+        //['Wes', 'Sarah', 'Ryan', 'Lux'] ['Wes', 'Sarah', 'Ryan', 'Ben']
+
+        // or create a new array and concat the old one in
+        const team4 = [].concat(players);
+        console.log(players, team4);
+        //['Wes', 'Sarah', 'Ryan', 'Lux'] ['Wes', 'Sarah', 'Ryan', 'Lux']
+        team4[1] = 'Ben'
+        console.log(players, team4);
+        //['Wes', 'Sarah', 'Ryan', 'Lux'] ['Wes', 'Ben', 'Ryan', 'Lux']
+
+        // or use the new ES6 Spread
+        const team3 = [...players];
+        console.log(players, team3);
+        // ['Wes', 'Sarah', 'Ryan', 'Lux'] ['Wes', 'Sarah', 'Ryan', 'Lux']
+        team3[3] = 'Ben'
+        console.log(players, team3);
+        //['Wes', 'Sarah', 'Ryan', 'Lux'] ['Wes', 'Sarah', 'Ryan', 'Ben']
+
+        const team5 = Array.from(players);
+        console.log('team5', team5);
+        //['Wes', 'Sarah', 'Ryan', 'Lux']
+        team5[3] = 'cool';
+        console.log('team5', team5);
+        //['Wes', 'Sarah', 'Ryan', 'cool']
+        // now when we update it, the original one isn't changed
+
+
+        // The same thing goes for objects, let's say we have a person object
+        // with Objects
+        const person = {
+            name: 'Wes Bos',
+            age: 80
+        };
+
+        // and think we make a copy:
+        const cap = person;
+        console.log(person);
+        //{name: 'Wes Bos', age: 80}
+
+        // how do we take a copy instead?
+        const cap2 = Object.assign({}, person, { number: 100, age: 12 });
+        console.log(person, cap2);
+        //{name: 'Wes Bos', age: 80} 
+        //{name: 'Wes Bos', age: 12, number: 100}
+
+        // We will hopefully soon see the object ...spread
+        const cap3 = { ...person };
+        console.log(cap3);
+        //{name: 'Wes Bos', age: 80}
+
+        // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+
+        const wes = {
+            name: 'Wes',
+            age: 100,
+            social: {
+                twitter: '@wesbos',
+                facebook: 'wesbos.developer'
+            }
+        };
+
+
+        const dev = Object.assign({}, wes);
+        console.log(wes, dev);
+        /* {
+            "name": "wes",
+            "age": "100",
+            "social": {
+            "twitter": "@wesbos",
+            "facebook": "wesbos.developer"
+            }
+        }*/
+
+        //If we reassign one object property 
+        //in the first level:
+        dev.name = 'Wesley'
+        console.log(dev);
+        // It's ok! Works! 
+        /*{
+            "name": "Wesley",
+            "age": "100",
+            "social": {
+                "twitter": "@wesbos",
+                "facebook": "wesbos.developer"
+            }
+        }
+          */
+
+
+        // What if I try to reassign in 1 level deep?
+        dev.social.twitter = '@coolman';
+        console.log(dev.social);
+        //{"twitter": "@coolman", "facebook": "wesbos.developer"}
+
+        // Unfortunately this reassign the original object:
+        console.log(wes.social);
+        //{"twitter": "@coolman", "facebook": "wesbos.developer"}
+
+        // I understand this happens because we copy 
+        // just the first object level and form some 
+        // reason not access the nested objects properties.
+        // Another way suggested by Wes, 
+        // but not recommended by him, 
+        // is to transform this in JSON and parse the strings
+        // to turn this strings in Object again 
+
+        const dev2 = JSON.stringify(wes);
+        console.log(dev2);
+        // We just have the string, because the
+        // JSON.stringify() transforms an object to string
+        //{"name":"wes","age":"100","social":{"twitter":"@coolman","facebook":"wesbos.developer"}}
+
+        // To transform this string in an object again
+        // it's necessary to parse it:
+        const dev3 = JSON.parse(JSON.stringify(wes));
+        console.log(dev3);
+        /* Now we have an object
+        {
+        "name": "wes",
+        "age": "100",
+        "social": {
+            "twitter": "@coolman",
+            "facebook": "wesbos.developer"
+        }
+        }*/
+
+        dev3.social.twitter = '@coolman';
+        console.log(dev3.social);
+        /* {
+        "twitter": "@coolman",
+            "facebook": "wesbos.developer"
+    }
+
+    */
+
+        //If we look in the original array:
+        console.log(wes.social);
+        /* The original array wasn't changed:
+        {
+        "twitter": "@wesbos",
+        "facebook": "wesbos.developer"
+        }*/
+    </script>
+
+</body>
+
+</html>
