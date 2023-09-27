@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse Shadow</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+
+<body>
+
+    <div class="hero">
+        <h1 contenteditable>🔥WOAH!</h1>
+    </div>
+
+    <style>
+        html {
+            color: black;
+            font-family: sans-serif;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+
+        }
+
+        h1 {
+            text-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
+            font-size: 100px;
+            transition-duration: 0ms;
+            /* border:2px solid red; */
+        }
+    </style>
+
+    <script>
+        const hero = document.querySelector('.hero');
+        const text = hero.querySelector('h1');
+        // const walk = 800; //100px
+        const walk = hero.offsetHeight * (2/3); //100px
+
+        function shadow(e){
+            text.style.transitionDuration = '0ms';
+
+            // const width = hero.offsetWidth;
+            // const height = hero.offsetHeight;
+            const {offsetWidth:width , offsetHeight:height} = hero;
+            let {offsetX:x, offsetY:y} = e;
+            // console.log('height',height);
+            // console.log('width',width);
+
+            // console.log(this);
+            // console.log(y);
+            // console.log(height);
+
+            if(this !== e.target){
+                x= x + e.target.offsetLeft;
+                y= y + e.target.offsetTop;
+            }
+
+            
+
+            const xWalk = (x / width * walk) - (walk / 2);
+            const yWalk = (y /height * walk) -(walk / 2);
+            text.style.textShadow = `
+            ${xWalk}px ${yWalk}px 2px #186F65,
+            ${xWalk * -1}px ${yWalk * -1}px 2px lightblue,
+            ${xWalk}px ${yWalk * -1.5}px 2px lightgreen,
+            ${xWalk * -1.5}px ${yWalk }px 2px cyan
+            `;
+           
+
+        }
+
+        function reset(e){
+            
+            
+            if(e.type ==='mouseleave'){
+                
+                text.style.transitionDuration = '600ms';
+                text.style.textShadow = 'none';
+            }
+        }
+
+        hero.addEventListener('mousemove',shadow);
+        hero.addEventListener('mouseleave',reset)
+    </script>
+</body>
+
+</html>
